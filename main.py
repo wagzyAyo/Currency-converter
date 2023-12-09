@@ -26,13 +26,14 @@ def convert(from_c, to_c, amount):
         #converted_amount = rate * int(amount)
         #converted_amount = round(converted_amount, 2)
         #return converted_amount
-        from_rate = Decimal(response['rates'][from_c])
-        to_rate = Decimal(response['rates'][to_c])
-        print(from_rate)
-        print(to_rate)
-        
-        convert_amount = round((Decimal(amount) ) * to_rate / from_rate, 2)
-        return convert_amount
+        rate = int(response['rates'][from_c])
+        rate_to = int(response['rates'][to_c])
+        amount_in_Euro = int(amount) / rate
+        conv_amount = amount_in_Euro * rate_to
+        conv_amount = round(conv_amount, 2)
+        print(type(amount_in_Euro))
+        print(type(rate_to))
+        return conv_amount
     else:
         return('Invalid conversion')
    except Exception as e:
