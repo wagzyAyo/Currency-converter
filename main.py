@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 import requests
 import os
+from decimal import Decimal
 from dotenv import load_dotenv
 
 app = Flask(__name__)
@@ -20,10 +21,18 @@ def convert(from_c, to_c, amount):
    try:
     response = requests.get(endpoint).json()
     print(response)
-    if from_c == response['base']:
-        rate = response['rates'][to_c]
-        converted_amount = rate * int(amount)
-        return converted_amount
+    if from_c in response['rates'] and to_c in response['rates']:
+        #rate = response['rates'][to_c]
+        #converted_amount = rate * int(amount)
+        #converted_amount = round(converted_amount, 2)
+        #return converted_amount
+        from_rate = Decimal(response['rates'][from_c])
+        to_rate = Decimal(response['rates'][to_c])
+        print(from_rate)
+        print(to_rate)
+        
+        convert_amount = round((Decimal(amount) ) * to_rate / from_rate, 2)
+        return convert_amount
     else:
         return('Invalid conversion')
    except Exception as e:
@@ -33,7 +42,7 @@ def convert(from_c, to_c, amount):
 result = convert(from_c = input("Convert from : ").upper(),
    to_c = input('Convert to : ').upper(),
    amount = input("Amount to convert : ").upper())
-print(result)
+print(f'The conversion is {result}')
 
 
 
