@@ -14,13 +14,13 @@ load_dotenv()
 
 endpoint = os.getenv('endpoint')
 
-
+response = requests.get(endpoint).json()
+print(response)
 
 def convert(from_c, to_c, amount):
    '''Handle currency conversion rates'''
    try:
-    response = requests.get(endpoint).json()
-    print(response)
+    
     if from_c in response['rates'] and to_c in response['rates']:
         #rate = response['rates'][to_c]
         #converted_amount = rate * int(amount)
@@ -39,13 +39,24 @@ def convert(from_c, to_c, amount):
    except Exception as e:
       return f'Error: {str(e)}'
    
-
-result = convert(from_c = input("Convert from : ").upper(),
-   to_c = input('Convert to : ').upper(),
-   amount = input("Amount to convert : ").upper())
+from_conv = input("Convert from : ").upper()
+to_conv = input('Convert to : ').upper()
+amount = input("Amount to convert : ").upper()
+# test
+result = convert(from_conv,to_conv,amount)
 print(f'The conversion is {result}')
 
 
+def unit_per(from_c, to_c, amount):
+   '''Calculates the unites per conversion'''
+   rate_from = Decimal(response['rates'][from_c])
+   rate_to = Decimal(response['rates'][to_c])
+   unit_to = round(result / int(amount), 4)
+   return f'Rate: 1{from_c} = {unit_to}{to_c} '
+   
+
+unit_result = unit_per(from_conv, to_conv, amount)
+print(unit_result)
 
 @app.route('/')
 def home():
