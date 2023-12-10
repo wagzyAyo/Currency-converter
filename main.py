@@ -3,6 +3,8 @@ import requests
 import os
 from decimal import Decimal
 from dotenv import load_dotenv
+from datetime import datetime
+
 
 app = Flask(__name__)
 load_dotenv()
@@ -47,6 +49,11 @@ result = convert(from_conv,to_conv,amount)
 print(f'The conversion is {result}')
 
 
+## Get current year
+year = datetime.now().year
+print(year)
+
+
 def unit_per(from_c, to_c, amount):
    '''Calculates the unites per conversion'''
    rate_from = Decimal(response['rates'][from_c])
@@ -60,7 +67,7 @@ print(unit_result)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html', year=year)
 
 if __name__ == '__main__':
     app.run(debug=True)
