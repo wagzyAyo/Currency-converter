@@ -52,7 +52,7 @@ def unit_per(from_c, to_c, amount):
    rate_from = Decimal(response['rates'][from_c])
    rate_to = Decimal(response['rates'][to_c])
    unit_to = round(result / int(amount), 4)
-   return f'Rate: 1{from_c} = {unit_to}{to_c} '
+   return f'Rate: 1{from_c} = {unit_to}{to_c}'
    
 
 unit_result = unit_per(from_conv, to_conv, amount)
