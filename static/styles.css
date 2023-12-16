@@ -1,6 +1,10 @@
 body{
     font-family: Monda;
 }
+.imgs{
+    width: 216px;
+    height:70px;
+}
 .footer{
     background:#000000;
 }
