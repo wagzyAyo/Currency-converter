@@ -19,7 +19,7 @@ class Form(FlaskForm):
    select= SelectField(validators=[DataRequired()], choices=[(currency_code, currency_code) for currency_code in currency_list])
    amount = FloatField(validators=[DataRequired()])
    convert_to = SelectField(validators=[DataRequired()], choices=[(currency_code, currency_code) for currency_code in currency_list])
-   converted_amount = StringField()
+   converted_amount = StringField(render_kw={'readonly' : True})
 
 
 
@@ -51,11 +51,11 @@ def convert(from_c, to_c, amount):
    except Exception as e:
       return f'Error: {str(e)}'
    
-from_conv = input("Convert from : ").upper()
-to_conv = input('Convert to : ').upper()
-amount = input("Amount to convert : ").upper()
+#from_conv = input("Convert from : ").upper()
+#to_conv = input('Convert to : ').upper()
+#amount = input("Amount to convert : ").upper()
 # test
-result = convert(from_conv,to_conv,amount)
+#result = convert(from_conv,to_conv,amount)
 #print(f'The conversion is {result}')
 
 
@@ -64,17 +64,17 @@ year = datetime.now().year
 #print(year)
 
 
-def unit_per(from_c, to_c, amount):
+def unit_per(from_c, to_c, amount, result):
    '''Calculates the unites per conversion'''
    rate_from = Decimal(response['rates'][from_c])
    rate_to = Decimal(response['rates'][to_c])
    unit_to = round(result / int(amount), 4)
    if unit_to > 0:
       unit_to = round(unit_to, 2)
-   return f'Rate: 1{from_c} = {unit_to}{to_c}'
+   return f'1{from_c} = {unit_to}{to_c}'
    
 
-unit_result = unit_per(from_conv, to_conv, amount)
+#unit_result = unit_per(from_conv, to_conv, amount)
 #print(unit_result)
 
 #   App routes
@@ -82,16 +82,22 @@ unit_result = unit_per(from_conv, to_conv, amount)
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = Form()
-    convert_from = form.select.data
-    amount_from = form.amount.data
-    convert_to = form.convert_to.data
 
     if form.validate_on_submit():
-       form.amount = convert(convert_from, convert_to, amount_from)
-       unit = unit_per(convert_from, convert_to, amount_from)
-    return render_template('index.html', year=year, 
+       convert_from = form.select.data
+       amount_from = form.amount.data
+       convert_to = form.convert_to.data
+
+       converted_amont = convert(convert_from, convert_to, amount_from)
+       unit = unit_per(convert_from, convert_to, amount_from, converted_amont)
+
+       form.converted_amount.data = converted_amont
+       return render_template('index.html', year=year, 
                            form=form, convert_from=convert_from, convert_to=convert_to ,
-                           amount_from=amount_from, amount_converted=form.converted_amount)
+                           amount_from=amount_from, unit=unit, converted_amount=converted_amont)
+    
+    return render_template('index.html', year=year, 
+                           form=form)
 
 @app.route('/about')
 def about():
