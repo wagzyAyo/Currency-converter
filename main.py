@@ -71,5 +71,13 @@ print(unit_result)
 def home():
     return render_template('index.html', year=year)
 
+@app.route('/about')
+def about():
+   return render_template('about.html')
+
+@app.route('/privacypolicy')
+def privacypolicy():
+   return render_template('privacy.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

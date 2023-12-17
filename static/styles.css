@@ -5,12 +5,12 @@ body{
     width: 216px;
     height:70px;
 }
-.hero-img, .about-img{
+.hero-img, .about-img, .priv-img{
     width:384px;
     height:309px;
 }
 
-.hero, .about{
+.hero, .about, .priv{
     width:100%;
 }
 

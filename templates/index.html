@@ -27,16 +27,31 @@
         <p class="text-center text-secondary mt-2 pb-5">Rate:</p>
     </div>
     <!------about section------->
-    <div class="container about-section d-lg-flex align-items-center justify-content-center ">
+    <div class="container about-section d-lg-flex align-items-center justify-content-center space">
         <div class="max-w">
             <h2>About</h2>
             <p>We believe that financial transactions should
                 be as borderless as the modern world we live 
-                in. Whether you're a frequent traveler, <a href="">more</a></p>
+                in. Whether you're a frequent traveler, <a href="{{url_for('about')}}">more</a></p>
         </div>
         <div class="about-img">
             <img class="about" src="../static/images/unsplash_TamMbr4okv4.png" alt="about">
         </div>
     </div>
+    <!----Privacy policy------->
+    <div class="container privacy-section d-lg-flex align-items-center justify-content-center space ">
+        <div class="priv-img mr-5">
+            <img class="priv" src="../static/images/unsplash_ah-HeguOe9k.png" alt="about">
+        </div>
+
+        <div class="max-w">
+
+            <h2>Privacy Policy</h2>
+            <p>This Privacy Policy is designed to help you understand
+                how we collect, use, disclose, and safeguard your personal 
+                information. <a href="{{url_for('privacypolicy')}}">more</a></p>
+        
+    </div>
+
 {% endblock %}
 {% include 'footer.html' %}
