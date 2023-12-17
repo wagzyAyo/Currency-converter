@@ -22,7 +22,17 @@
         <h2 class="text-center text-secondary">Convert Currency</h2>
         <p class="text-center text-secondary">Check live rate</p>
         <div class="m-auto box">
-
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <div class="d-flex align-items-center justify-content-center">
+                {{ form.convert_from.label }} {{ form.convert_from}}
+                {{ form.amount_from_convert.label }}  {{ form.amount_from_convert }}
+            </div>
+            <div>
+            <hr>
+            <button type="submit"><i class="fa-solid fa-arrow-up-arrow-down"></i></button>
+            </div>
+            </form>
         </div>
         <p class="text-center text-secondary mt-2 pb-5">Rate:</p>
     </div>

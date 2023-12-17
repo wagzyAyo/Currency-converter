@@ -15,7 +15,7 @@ app.secret_key = os.getenv('token')
 
 class Form(FlaskForm):
    convert_from = StringField(validators=[DataRequired()])
-   amount_from_convert = StringField(validators=[DataRequired])
+   amount_from_convert = FloatField(validators=[DataRequired()])
    convert_to = StringField(validators=[DataRequired()])
    amount_converted = StringField()
 
@@ -88,7 +88,8 @@ def home():
        form.amount_converted = convert(convert_from, convert_to, amount_from)
        unit = unit_per(convert_from, convert_to, amount_from)
     return render_template('index.html', year=year, 
-                           amount_converted = form.amount_converted, unit=unit)
+                           form=form, convert_from=convert_from, convert_to=convert_to ,
+                           amount_from=amount_from, amount_converted=form.amount_converted)
 
 @app.route('/about')
 def about():
