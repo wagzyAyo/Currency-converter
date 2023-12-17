@@ -36,6 +36,21 @@ body{
     width:487px;
     height:244px;
 }
+.button{
+    padding:10px;
+    background-color: #0840AC;
+    border:none;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    top:2.2em;
+    cursor: pointer;
+}
+
+.button img{
+    width:20.4px;
+    height:23px;
+}
 .footer{
     background:#000000;
 }
