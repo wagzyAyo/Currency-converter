@@ -6,12 +6,28 @@ body{
     height:70px;
 }
 .hero-img{
-    width:34px;
-    height:31px;
+    width:384px;
+    height:309px;
 }
-.footer{
-    background:#000000;
+.hero{
+    width:100%;
+}
+
+.padding{
+    padding:0 7%;
+}
+.cs-bg1{
+    background: #D6D6D6;
+}
+.max-w{
+    max-width: 580px;
+    gap:12px;
 }
 .space{
     margin-top:5em;
+    padding:5px 15%;
+    
+}
+.footer{
+    background:#000000;
 }
