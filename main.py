@@ -5,19 +5,21 @@ from decimal import Decimal
 from dotenv import load_dotenv
 from datetime import datetime
 from flask_wtf import FlaskForm
-from wtforms import StringField,FloatField
+from wtforms import StringField,FloatField,SelectField
 from wtforms.validators import DataRequired
+from currency_list import currency_list
 
+#print(currency_list)
 
 app = Flask(__name__)
 load_dotenv()
 app.secret_key = os.getenv('token')
 
 class Form(FlaskForm):
-   convert_from = StringField(validators=[DataRequired()])
-   amount_from_convert = FloatField(validators=[DataRequired()])
-   convert_to = StringField(validators=[DataRequired()])
-   amount_converted = StringField()
+   select= SelectField(validators=[DataRequired()], choices=[(currency_code, currency_code) for currency_code in currency_list])
+   amount = FloatField(validators=[DataRequired()])
+   convert_to = SelectField(validators=[DataRequired()], choices=[(currency_code, currency_code) for currency_code in currency_list])
+   converted_amount = StringField()
 
 
 
@@ -80,16 +82,16 @@ unit_result = unit_per(from_conv, to_conv, amount)
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = Form()
-    convert_from = form.convert_from.data
-    amount_from = form.amount_from_convert.data
+    convert_from = form.select.data
+    amount_from = form.amount.data
     convert_to = form.convert_to.data
 
     if form.validate_on_submit():
-       form.amount_converted = convert(convert_from, convert_to, amount_from)
+       form.amount = convert(convert_from, convert_to, amount_from)
        unit = unit_per(convert_from, convert_to, amount_from)
     return render_template('index.html', year=year, 
                            form=form, convert_from=convert_from, convert_to=convert_to ,
-                           amount_from=amount_from, amount_converted=form.amount_converted)
+                           amount_from=amount_from, amount_converted=form.converted_amount)
 
 @app.route('/about')
 def about():
