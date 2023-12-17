@@ -15,6 +15,8 @@ app = Flask(__name__)
 load_dotenv()
 app.secret_key = os.getenv('token')
 
+
+#class form
 class Form(FlaskForm):
    select= SelectField(validators=[DataRequired()], choices=[(currency_code, currency_code) for currency_code in currency_list])
    amount = FloatField(validators=[DataRequired()])
@@ -29,6 +31,8 @@ endpoint = os.getenv('endpoint')
 response = requests.get(endpoint).json()
 print(response)
 
+
+#Convert currency
 def convert(from_c, to_c, amount):
    '''Handle currency conversion rates'''
    try:
@@ -63,7 +67,7 @@ def convert(from_c, to_c, amount):
 year = datetime.now().year
 #print(year)
 
-
+#calculate unit
 def unit_per(from_c, to_c, amount, result):
    '''Calculates the unites per conversion'''
    rate_from = Decimal(response['rates'][from_c])
@@ -79,6 +83,8 @@ def unit_per(from_c, to_c, amount, result):
 
 #   App routes
 
+
+#Home route
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = Form()
@@ -99,10 +105,14 @@ def home():
     return render_template('index.html', year=year, 
                            form=form)
 
+
+#about route
 @app.route('/about')
 def about():
    return render_template('about.html')
 
+
+#privacy route
 @app.route('/privacypolicy')
 def privacypolicy():
    return render_template('privacy.html')
