@@ -5,11 +5,12 @@ body{
     width: 216px;
     height:70px;
 }
-.hero-img{
+.hero-img, .about-img{
     width:384px;
     height:309px;
 }
-.hero{
+
+.hero, .about{
     width:100%;
 }
 
@@ -27,6 +28,13 @@ body{
     margin-top:5em;
     padding:5px 15%;
     
+}
+.box{
+    background: #fff;
+    border-radius: 30px;
+    align-items: center;
+    width:487px;
+    height:244px;
 }
 .footer{
     background:#000000;
