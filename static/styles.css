@@ -1,10 +1,17 @@
 body{
     font-family: Monda;
 }
-.imgs{
+.imgs, .store-img{
     width: 216px;
     height:70px;
 }
+.hero-img{
+    width:34px;
+    height:31px;
+}
 .footer{
     background:#000000;
+}
+.space{
+    margin-top:5em;
 }
