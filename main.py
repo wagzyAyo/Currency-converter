@@ -55,6 +55,8 @@ def convert(from_c, to_c, amount):
    except Exception as e:
       return f'Error: {str(e)}'
    
+
+#TEST   
 #from_conv = input("Convert from : ").upper()
 #to_conv = input('Convert to : ').upper()
 #amount = input("Amount to convert : ").upper()
@@ -116,6 +118,7 @@ def about():
 @app.route('/privacypolicy')
 def privacypolicy():
    return render_template('privacy.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
