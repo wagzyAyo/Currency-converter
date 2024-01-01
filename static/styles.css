@@ -5,13 +5,20 @@ body{
     width: 216px;
     height:70px;
 }
-.hero-img, .about-img, .priv-img{
+.about-img, .priv-img{
     width:384px;
     height:309px;
 }
-
+.hero-img{
+    width:143px;
+    height:298px;
+}
 .hero, .about, .priv{
     width:100%;
+}
+.hero{
+    position:relative;
+    left:8em;
 }
 
 .padding{
@@ -53,4 +60,7 @@ body{
 }
 .footer{
     background:#000000;
+}
+.privacy-section{
+    margin-bottom:2em;
 }
