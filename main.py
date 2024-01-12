@@ -8,6 +8,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField,FloatField,SelectField
 from wtforms.validators import DataRequired
 from currency_list import currency_list
+from img import currency_map, get_img_url
 
 #print(currency_list)
 
@@ -18,8 +19,10 @@ app.secret_key = os.getenv('token')
 
 #class form
 class Form(FlaskForm):
+   country_image1 = StringField(render_kw={'readonly': True})
    select= SelectField(validators=[DataRequired()], choices=[(currency_code, currency_code) for currency_code in currency_list])
    amount = FloatField(validators=[DataRequired()])
+   country_image2 = StringField(render_kw={'readonly': True})
    convert_to = SelectField(validators=[DataRequired()], choices=[(currency_code, currency_code) for currency_code in currency_list])
    converted_amount = StringField(render_kw={'readonly' : True})
 
