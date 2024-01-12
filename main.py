@@ -98,6 +98,9 @@ def home():
        convert_from = form.select.data
        amount_from = form.amount.data
        convert_to = form.convert_to.data
+       #Set country image base on selected country image code
+       #form.country_image1.data = get_img_url(convert_from)
+       #form.country_image2.data = get_img_url(convert_to)
 
        converted_amont = convert(convert_from, convert_to, amount_from)
        unit = unit_per(convert_from, convert_to, amount_from, converted_amont)
