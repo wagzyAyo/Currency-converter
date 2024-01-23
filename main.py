@@ -32,7 +32,7 @@ class Form(FlaskForm):
 endpoint = os.getenv('endpoint')
 
 response = requests.get(endpoint).json()
-print(response)
+#print(response)
 
 
 #Convert currency
