@@ -2,7 +2,6 @@ from flask import Flask, render_template
 import requests
 import os
 from decimal import Decimal
-from dotenv import load_dotenv
 from datetime import datetime
 from flask_wtf import FlaskForm
 from wtforms import StringField,FloatField,SelectField
@@ -10,49 +9,51 @@ from wtforms.validators import DataRequired
 from currency_list import currency_list
 from img import currency_map, get_img_url
 from api.convert import Bp
+from api.hello import simple_dict
+from utils import convert, unit_per
 
 #print(currency_list)
 
 app = Flask(__name__)
-load_dotenv()
 app.secret_key = os.getenv('token')
 app.register_blueprint(Bp, url_prefix='/api/convert')
+app.register_blueprint(simple_dict, url_prefix='/api/hello')
 
 
 #class form
 class Form(FlaskForm):
-   country_image1 = StringField(render_kw={'readonly': True})
+   #country_image1 = StringField(render_kw={'readonly': True})
    select= SelectField(validators=[DataRequired()], choices=[(currency_code, currency_code) for currency_code in currency_list])
    amount = FloatField(validators=[DataRequired()])
-   country_image2 = StringField(render_kw={'readonly': True})
+   #country_image2 = StringField(render_kw={'readonly': True})
    convert_to = SelectField(validators=[DataRequired()], choices=[(currency_code, currency_code) for currency_code in currency_list])
    converted_amount = StringField(render_kw={'readonly' : True})
 
 
 
 
-endpoint = os.getenv('endpoint')
+#endpoint = os.getenv('endpoint')
 
-response = requests.get(endpoint).json()
+#response = requests.get(endpoint).json()
 #print(response)
 
 
 #Convert currency
-def convert(from_c, to_c, amount):
+#def convert(from_c, to_c, amount):
    '''Handle currency conversion rates'''
-   try:
-      if from_c in response['rates'] and to_c in response['rates']:
-         rate_from = Decimal(response['rates'][from_c])
-         rate_to = Decimal(response['rates'][to_c])
+  # try:
+  #    if from_c in response['rates'] and to_c in response['rates']:
+  #       rate_from = Decimal(response['rates'][from_c])
+   #      rate_to = Decimal(response['rates'][to_c])
          
-         convert_amount = (Decimal(amount) / rate_from) * rate_to
-         convert_amount = round(convert_amount, 2)
+   #      convert_amount = (Decimal(amount) / rate_from) * rate_to
+    #     convert_amount = round(convert_amount, 2)
          
-         return convert_amount
-      else:
-         return('Invalid conversion')
-   except Exception as e:
-      return f'Error: {str(e)}'
+   #      return convert_amount
+   #   else:
+   #      return('Invalid conversion')
+   #except Exception as e:
+   #   return f'Error: {str(e)}'
    
 
 #TEST   
@@ -69,14 +70,14 @@ year = datetime.now().year
 #print(year)
 
 #calculate unit
-def unit_per(from_c, to_c, amount, result):
-   '''Calculates the unites per conversion'''
-   rate_from = Decimal(response['rates'][from_c])
-   rate_to = Decimal(response['rates'][to_c])
-   unit_to = round(result / int(amount), 4)
-   if unit_to > 0:
-      unit_to = round(unit_to, 2)
-   return f'1{from_c} = {unit_to}{to_c}'
+#def unit_per(from_c, to_c, amount, result):
+#   '''Calculates the unites per conversion'''
+#  rate_from = Decimal(response['rates'][from_c])
+#   rate_to = Decimal(response['rates'][to_c])
+#   unit_to = round(result / int(amount), 4)
+#   if unit_to > 0:
+#      unit_to = round(unit_to, 2)
+#   return f'1{from_c} = {unit_to}{to_c}'
    
 
 #unit_result = unit_per(from_conv, to_conv, amount)
