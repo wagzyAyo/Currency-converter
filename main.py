@@ -9,12 +9,14 @@ from wtforms import StringField,FloatField,SelectField
 from wtforms.validators import DataRequired
 from currency_list import currency_list
 from img import currency_map, get_img_url
+from api.convert import Bp
 
 #print(currency_list)
 
 app = Flask(__name__)
 load_dotenv()
 app.secret_key = os.getenv('token')
+app.register_blueprint(Bp, url_prefix='/api/convert')
 
 
 #class form
