@@ -24,10 +24,10 @@ app.register_blueprint(simple_dict, url_prefix='/api/hello')
 class Form(FlaskForm):
    #country_image1 = StringField(render_kw={'readonly': True})
    select= SelectField(validators=[DataRequired()], choices=[(currency_code, currency_code) for currency_code in currency_list])
-   amount = FloatField(validators=[DataRequired()])
+   amount = FloatField(validators=[DataRequired()], render_kw={'class': 'small_input'})
    #country_image2 = StringField(render_kw={'readonly': True})
    convert_to = SelectField(validators=[DataRequired()], choices=[(currency_code, currency_code) for currency_code in currency_list])
-   converted_amount = StringField(render_kw={'readonly' : True})
+   converted_amount = StringField(render_kw={'readonly' : True, 'class': 'small_input'})
 
 
 
