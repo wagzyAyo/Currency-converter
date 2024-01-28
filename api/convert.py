@@ -1,9 +1,9 @@
 from flask import Blueprint
 from utils import convert, unit_per
 
-Bp = Blueprint('Bp', __name__, url_prefix="/api/convert")
+Bp = Blueprint('Bp', __name__)
 
-@Bp.route('/')
+@Bp.route('/<convert_from>/<convert_to>/<int: amount>')
 def convert(convert_from, convert_to, amount):
     convert_from = int(convert_from)
     convert_to = int(convert_to)
