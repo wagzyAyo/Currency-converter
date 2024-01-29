@@ -6,6 +6,7 @@ from sqlalchemy.orm import DeclarativeBase
 class Base(DeclarativeBase):
 
     def __init__(self):
+        """initialize base class"""
         date = datetime.now()
         id = uuid4()
 
