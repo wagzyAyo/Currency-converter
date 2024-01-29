@@ -41,7 +41,8 @@ body{
     border-radius: 30px;
     align-items: center;
     width:487px;
-    height:244px;
+    height:auto;
+    padding: 50px;
 }
 .button{
     padding:10px;
