@@ -12,7 +12,7 @@ import json
 
 base = declarative_base()
 load_dotenv()
-engine = create_engine('sqlite+pysqlite:///:memory:', echo=True)
+engine = create_engine('sqlite:///currency.db', echo=True)
 
 class CurrencyData(base):
     __tablename__ = 'currency_data'
