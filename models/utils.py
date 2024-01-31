@@ -4,10 +4,10 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-endpoint = os.getenv('endpoint')
+endpoint = os.getenv('endpoint2')
 
 response = requests.get(endpoint).json()
-#print(response)
+print(response)
 
 #Convert currency
 def convert(from_c, to_c, amount):
