@@ -10,6 +10,7 @@ from models.img import currency_map, get_img_url
 from api.convert import Bp
 from api.hello import simple_dict
 from models.utils import convert, unit_per
+from models import engine
 
 #print(currency_list)
 
