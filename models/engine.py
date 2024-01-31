@@ -1,36 +1,23 @@
-"""Base clase declaration"""
-from datetime import datetime
-from uuid import uuid4
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
-from sqlalchemy import Column, String, DateTime
-from sqlalchemy.orm import Session
+from pymongo import MongoClient
+import requests
 from dotenv import load_dotenv
 import os
-import requests
-import json
 
-base = declarative_base()
-load_dotenv()
-engine = create_engine('sqlite:///currency.db', echo=True)
-
-class CurrencyData(base):
-    __tablename__ = 'currency_data'
-    id = Column(String, primary_key=True, default=str(uuid4()))
-    date = Column(DateTime, default=datetime.now())
+def get_database():
+    load_dotenv()
     endpoint = os.getenv('endpoint')
-    data = Column(String, default=json.dumps(requests.get(endpoint).json()))
+
+    client = MongoClient("mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000")
+
+    data_collection = client.data_collection
+
+    currency_data = data_collection.currency_data
+
+    result = requests.get(endpoint).json()
+    currency_data.insert_one(result)
+
+    for data in currency_data.find():
+        print(data)
 
 
-# Create tables in the database
-base.metadata.create_all(engine)
-
-# Create a session to interact with the database
-session = Session(engine)
-
-# Create an instance of CurrencyData
-currency_instance = CurrencyData()
-
-# Add the instance to the session and commit changes
-session.add(currency_instance)
-session.commit()
+get_database()

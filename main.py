@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-import requests
 import os
 from decimal import Decimal
 from datetime import datetime
