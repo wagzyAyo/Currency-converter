@@ -15,8 +15,8 @@ def get_database():
         endpoint = os.getenv('endpoint')
         result = requests.get(endpoint)
         if result.status_code != 200:
-            endpoint = os.getenv('endpoint2')
-            result = requests.get(endpoint)
+            endpoint2 = os.getenv('endpoint2')
+            result = requests.get(endpoint2)
         result = result.json()
         currency_data.insert_one(result)
     except Exception as e:
