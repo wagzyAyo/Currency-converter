@@ -5,6 +5,8 @@ import os
 import schedule
 import time
 
+
+load_dotenv()
 client = MongoClient("mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000")
 
 data_collection = client.data_collection
@@ -12,7 +14,9 @@ data_collection = client.data_collection
 currency_data = data_collection.currency_data
 
 def get_database():
-    load_dotenv()
+    """Get data from external 
+    API and insert to database
+    """
     try:
         endpoint = os.getenv('endpoint')
 
