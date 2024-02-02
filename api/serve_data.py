@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from models.utils import convert, unit_per
 from decimal import Decimal
+from models.country_code import countries_and_currency_codes
 
 Bp = Blueprint('Bp', __name__)
 
