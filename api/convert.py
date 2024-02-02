@@ -18,3 +18,7 @@ def convert_api(convert_from, convert_to, amount):
              'converted_amount': Decimal(convert_result),
              'Unit_per1': unit_result
              })
+
+@Bp.route('/currencies&codes')
+def get_currency_code():
+    return jsonify(countries_and_currency_codes)

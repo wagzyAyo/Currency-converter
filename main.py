@@ -5,8 +5,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField,FloatField,SelectField
 from wtforms.validators import DataRequired
 from models.currency_list import currency_list
-from api.serve_data import Bp
-from api.hello import simple_dict
+from api.convert import Bp
+from api.currency import simple_dict
 from models.utils import convert, unit_per
 
 
@@ -15,7 +15,7 @@ from models.utils import convert, unit_per
 app = Flask(__name__)
 app.secret_key = os.getenv('token')
 app.register_blueprint(Bp, url_prefix='/api/convert')
-app.register_blueprint(simple_dict, url_prefix='/api/hello')
+app.register_blueprint(simple_dict, url_prefix='/api/currencies&codes')
 
 
 #class form
