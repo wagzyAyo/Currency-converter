@@ -1,25 +1,24 @@
 from decimal import Decimal
-from dotenv import load_dotenv
+import requests
 from pymongo import MongoClient
+from dotenv import load_dotenv
 import os
-import ssl
 
 load_dotenv()
-#endpoint = os.getenv('endpoint')
-password = os.getenv('db_password')
+endpoint = os.getenv('endpoint2')
 
 uri = os.getenv('uri')
-ssl_context = ssl.create_default_context()
-ssl_context.check_hostname = False
-client = MongoClient(uri, ssl=True, ssl_context=ssl_context)
+client = MongoClient(uri)
+def connect_db():
+   
+    data_collection = client.data_collection
 
-data_collection = client.data_collection
+    currency_data = data_collection.currency_data
+    return currency_data
 
-currency_data = data_collection.currency_data
-
-#response = requests.get(endpoint).json()
-response = currency_data.find_one({}, sort=[('timestamp', -1)])
-print(response)
+response = connect_db()
+response = response.find_one({}, sort=[('timestamp', -1)])
+#print(response)
 
 #Convert currency
 def convert(from_c, to_c, amount):
