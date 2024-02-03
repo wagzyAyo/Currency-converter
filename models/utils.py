@@ -2,15 +2,16 @@ from decimal import Decimal
 from dotenv import load_dotenv
 from pymongo import MongoClient
 import os
-from pymongo.server_api import ServerApi
+import ssl
 
 load_dotenv()
 #endpoint = os.getenv('endpoint')
 password = os.getenv('db_password')
 
 uri = os.getenv('uri')
-
-client = MongoClient(uri, server_api=ServerApi('1'))
+ssl_context = ssl.create_default_context()
+ssl_context.check_hostname = False
+client = MongoClient(uri, ssl=True, ssl_context=ssl_context)
 
 data_collection = client.data_collection
 
