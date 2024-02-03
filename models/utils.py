@@ -10,7 +10,7 @@ endpoint = os.getenv('endpoint2')
 uri = os.getenv('uri')
 client = MongoClient(uri)
 def connect_db():
-   
+    '''connects to db'''
     data_collection = client.data_collection
 
     currency_data = data_collection.currency_data
@@ -57,4 +57,3 @@ def unit_per(from_c, to_c, amount, result):
    if unit_to > 0:
       unit_to = round(unit_to, 2)
    return f'1{from_c} = {unit_to}{to_c}'
-   

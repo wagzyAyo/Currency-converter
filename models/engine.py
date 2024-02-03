@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import requests
-from pymongo import MongoClient
+from utils import connect_db
 import os
 import schedule
 import time
@@ -9,15 +9,7 @@ from datetime import datetime
 
 
 load_dotenv()
-uri = os.getenv('uri')
-client = MongoClient(uri)
 
-def connect_db():
-   
-    data_collection = client.data_collection
-
-    currency_data = data_collection.currency_data
-    return currency_data
 
 currency_data = connect_db()
 
@@ -51,9 +43,9 @@ def get_database():
         #    print(data)
         #for data in currency_data.find():
         #    print(data)
-        client.close()
+        pass
 
-wat_4 = convert_to_wat('13:39', 'Africa/Lagos')
+wat_4 = convert_to_wat('13:59', 'Africa/Lagos')
 schedule.every().day.at(str(wat_4.strftime('%H:%M'))).do(get_database)
 
 wat_12 = convert_to_wat('12:00', 'Africa/Lagos')
