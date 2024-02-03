@@ -1,13 +1,19 @@
 from decimal import Decimal
-import requests
 from dotenv import load_dotenv
-import os
+from pymongo import MongoClient
 
 load_dotenv()
-endpoint = os.getenv('endpoint2')
+#endpoint = os.getenv('endpoint')
 
-response = requests.get(endpoint).json()
-#print(response)
+client = MongoClient("mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000")
+
+data_collection = client.data_collection
+
+currency_data = data_collection.currency_data
+
+#response = requests.get(endpoint).json()
+response = currency_data.find_one({}, sort=[('timestamp', -1)])
+print(response)
 
 #Convert currency
 def convert(from_c, to_c, amount):
