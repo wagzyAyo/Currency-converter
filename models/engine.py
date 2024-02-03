@@ -9,7 +9,8 @@ from datetime import datetime
 
 
 load_dotenv()
-client = MongoClient("mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000")
+uri = os.getenv('uri')
+client = MongoClient(uri)
 
 data_collection = client.data_collection
 
@@ -48,7 +49,7 @@ def get_database():
         #    print(data)
         client.close()
 
-wat_4 = convert_to_wat('04:00', 'Africa/Lagos')
+wat_4 = convert_to_wat('11:58', 'Africa/Lagos')
 schedule.every().day.at(str(wat_4.strftime('%H:%M'))).do(get_database)
 
 wat_12 = convert_to_wat('12:00', 'Africa/Lagos')

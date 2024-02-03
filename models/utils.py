@@ -1,11 +1,16 @@
 from decimal import Decimal
 from dotenv import load_dotenv
 from pymongo import MongoClient
+import os
+from pymongo.server_api import ServerApi
 
 load_dotenv()
 #endpoint = os.getenv('endpoint')
+password = os.getenv('db_password')
 
-client = MongoClient("mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000")
+uri = os.getenv('uri')
+
+client = MongoClient(uri, server_api=ServerApi('1'))
 
 data_collection = client.data_collection
 
