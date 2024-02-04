@@ -3,8 +3,6 @@ import requests
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
-from pytz import timezone
-from datetime import datetime
 
 load_dotenv()
 endpoint = os.getenv('endpoint2')
@@ -12,7 +10,7 @@ endpoint = os.getenv('endpoint2')
 uri = os.getenv('uri')
 client = MongoClient(uri)
 def connect_db():
-    '''connects to Mongodb'''
+    '''connects to db'''
     data_collection = client.data_collection
 
     currency_data = data_collection.currency_data
@@ -59,36 +57,3 @@ def unit_per(from_c, to_c, amount, result):
    if unit_to > 0:
       unit_to = round(unit_to, 2)
    return f'1{from_c} = {unit_to}{to_c}'
-
-def convert_to_wat(time_str, time_zone):
-    """Convert a spcified 
-    time zone to west Africa
-    (WAT) time
-    """
-    source_tz= timezone(time_zone)
-    local_time = source_tz.localize(datetime.strptime(time_str, '%H:%M'))
-    wat_time = local_time.astimezone(timezone('Africa/Lagos'))
-    return wat_time
-
-def get_database():
-    """Get data from external 
-    API and insert to database
-    """
-    currency_data = connect_db()
-    try:
-        endpoint = os.getenv('endpoint')
-
-        result = requests.get(endpoint)
-        if result.status_code != 200:
-            endpoint = os.getenv('endpoint2')
-            result = requests.get(endpoint)
-        result = result.json()
-        currency_data.insert_one(result)
-    except Exception as e:
-        return
-    finally:
-        #for data in currency_data.find():
-        #    print(data)
-        #for data in currency_data.find():
-        #    print(data)
-        pass
