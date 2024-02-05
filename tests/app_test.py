@@ -1,13 +1,13 @@
 import unittest
 from models.utils import endpoint, response
 
-class App_test(unittest.TestCase):
+class TestApp(unittest.TestCase):
 
-    def check_endpoint(self):
+    def test_check_endpoint(self):
 
         self.assertEqual(type(endpoint), str)
 
-    def check_response(self):
+    def test_check_response(self):
 
         self.assertEqual(type(response), dict)
 
