@@ -17,6 +17,12 @@ class TestApp(unittest.TestCase):
         self.assertTrue(isinstance(convert('USD', 'NGN', 100), Decimal))
         self.assertEqual(convert(1.080672, 1290.866361, 100), "Invalid conversion")
 
+    def test_convert2(self):
+        """Test convert function 2"""
+        self.assertFalse(isinstance(convert('USD', 'NGN', 100), str))
+        with self.assertRaises(KeyError):
+            convert('zzz', 'ttt', 10)
+
 
 
 if __name__ == "__main__":

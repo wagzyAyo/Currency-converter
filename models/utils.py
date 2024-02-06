@@ -32,10 +32,11 @@ def convert(from_c, to_c, amount):
          convert_amount = round(convert_amount, 2)
          
          return convert_amount
-      else:
-         return('Invalid conversion')
+      #else:
+      #   return('Invalid conversion')
+      raise KeyError('Invalid key')
    except Exception as e:
-      return f'Error: {str(e)}'
+      print(f'Error: {str(e)}') 
    
 
 #TEST   
