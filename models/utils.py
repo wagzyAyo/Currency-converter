@@ -23,21 +23,17 @@ response = response.find_one({}, sort=[('timestamp', -1)])
 #Convert currency
 def convert(from_c, to_c, amount):
    '''Handle currency conversion rates'''
-   try:
-      if from_c in response['rates'] and to_c in response['rates']:
-         rate_from = Decimal(response['rates'][from_c])
-         rate_to = Decimal(response['rates'][to_c])
-         
-         convert_amount = (Decimal(amount) / rate_from) * rate_to
-         convert_amount = round(convert_amount, 2)
-         
-         return convert_amount
-      #else:
-      #   return('Invalid conversion')
-      raise KeyError('Invalid key')
-   except Exception as e:
-      print(f'Error: {str(e)}') 
+   if from_c in response['rates'] and to_c in response['rates']:
+      rate_from = Decimal(response['rates'][from_c])
+      rate_to = Decimal(response['rates'][to_c])
+      
+      convert_amount = (Decimal(amount) / rate_from) * rate_to
+      convert_amount = round(convert_amount, 2)
+      
+      return convert_amount
    
+   raise KeyError('Invalid key')
+
 
 #TEST   
 #from_conv = input("Convert from : ").upper()

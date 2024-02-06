@@ -1,7 +1,8 @@
-from models.utils import convert
+from models.utils import convert, unit_per
 
 result = convert('USD', 'NGN', 100)
 print(type(result))
 
-test = convert('zzdez', 'ttwe2t', 10)
-print(test)
+
+unit = unit_per('USD', 'NGN', 100, 119800)
+print(type(unit))

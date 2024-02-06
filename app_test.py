@@ -1,6 +1,6 @@
 import unittest
 from decimal import Decimal
-from models.utils import endpoint, response, convert
+from models.utils import endpoint, response, convert, unit_per
 
 class TestApp(unittest.TestCase):
 
@@ -15,7 +15,6 @@ class TestApp(unittest.TestCase):
     def test_convert1(self):
         """test convert function"""
         self.assertTrue(isinstance(convert('USD', 'NGN', 100), Decimal))
-        self.assertEqual(convert(1.080672, 1290.866361, 100), "Invalid conversion")
 
     def test_convert2(self):
         """Test convert function 2"""
@@ -23,6 +22,11 @@ class TestApp(unittest.TestCase):
         with self.assertRaises(KeyError):
             convert('zzz', 'ttt', 10)
 
+    def test_unit_per(self):
+        """Test unit_per function"""
+        self.assertTrue(isinstance(unit_per('USD', 'NGN', 100, 119800), str))
+        self.assertEqual(unit_per('USD', 'NGN', 100, 119800), "1USD = 1198.0NGN")
+        self.assertFalse(isinstance(unit_per('USD', 'NGN', 100, 119800), int))
 
 
 if __name__ == "__main__":
