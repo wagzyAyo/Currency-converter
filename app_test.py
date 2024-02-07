@@ -5,12 +5,13 @@ from models.utils import endpoint, response, convert, unit_per
 class TestApp(unittest.TestCase):
 
     def test_check_endpoint(self):
-
+        """Check APi endpoint"""
         self.assertEqual(type(endpoint), str)
 
     def test_check_response(self):
-
+        """Check the data received from db"""
         self.assertEqual(type(response), dict)
+        self.assertFalse(isinstance(response, str))
 
     def test_convert1(self):
         """test convert function"""
