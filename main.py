@@ -7,6 +7,7 @@ from wtforms.validators import DataRequired
 from models.currency_list import currency_list
 from api.convert import Bp
 from api.currency import simple_dict
+from api.currency_dict import currency_data
 from models.utils import convert, unit_per
 
 
@@ -16,6 +17,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv('token')
 app.register_blueprint(Bp, url_prefix='/api/convert')
 app.register_blueprint(simple_dict, url_prefix='/api/currencies&codes')
+app.register_blueprint(currency_data, url_prefix='/api/currencybase')
 
 
 #class form

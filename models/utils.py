@@ -16,8 +16,8 @@ def connect_db():
     currency_data = data_collection.currency_data
     return currency_data
 
-response = connect_db()
-response = response.find_one({}, sort=[('timestamp', -1)])
+all_data = connect_db()
+response = all_data.find_one({}, sort=[('timestamp', -1)])
 #print(response)
 
 #Convert currency
