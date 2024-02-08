@@ -30,7 +30,7 @@ def convert(from_c, to_c, amount):
          convert_amount = (Decimal(amount) / rate_from) * rate_to
          convert_amount = round(convert_amount, 2)
          return convert_amount
-      raise ValueError("Invalid value")
+      raise ZeroDivisionError("value must be greater than 0")
    
    raise ValueError("Invalid currency")
 
@@ -39,9 +39,11 @@ def convert(from_c, to_c, amount):
 #calculate unit
 def unit_per(from_c, to_c, amount, result):
    '''Calculates the unites per conversion'''
-   rate_from = Decimal(response['rates'][from_c])
-   rate_to = Decimal(response['rates'][to_c])
-   unit_to = round(result / int(amount), 4)
-   if unit_to > 0:
-      unit_to = round(unit_to, 2)
-   return f'1{from_c} = {unit_to}{to_c}'
+   if amount > 0:
+      rate_from = Decimal(response['rates'][from_c])
+      rate_to = Decimal(response['rates'][to_c])
+      unit_to = round(result / int(amount), 4)
+      if unit_to > 0:
+         unit_to = round(unit_to, 2)
+      return f'1{from_c} = {unit_to}{to_c}'
+   raise ZeroDivisionError("Value must be greater than 0")
