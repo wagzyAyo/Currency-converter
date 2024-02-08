@@ -1,5 +1,4 @@
 from decimal import Decimal
-import requests
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
@@ -33,15 +32,6 @@ def convert(from_c, to_c, amount):
       return convert_amount
    
    raise KeyError('Invalid key')
-
-
-#TEST   
-#from_conv = input("Convert from : ").upper()
-#to_conv = input('Convert to : ').upper()
-#amount = input("Amount to convert : ").upper()
-# test
-#result = convert(from_conv,to_conv,amount)
-#print(f'The conversion is {result}')
 
 
 
