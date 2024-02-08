@@ -2,6 +2,7 @@ import unittest
 from decimal import Decimal
 from models.utils import endpoint, response, convert, unit_per
 
+
 class TestApp(unittest.TestCase):
 
     def test_check_endpoint(self):
@@ -29,14 +30,13 @@ class TestApp(unittest.TestCase):
 
     def test_invalid_currency(self):
         """Test convert function with invalid currency"""
-        with self.assertRaises(ValueError):
+        with self.assertRaises(KeyError):
             convert('INVALID', 'NGN', 100)
 
     def test_negative_amount(self):
         """Test convert function with negative amount"""
         with self.assertRaises(ZeroDivisionError):
             convert('USD', 'NGN', -100)
-
 
     def test_unit_per_negative_amount(self):
         """Test unit_per function with negative amount"""
@@ -47,6 +47,7 @@ class TestApp(unittest.TestCase):
         """Test unit_per function with zero amount"""
         with self.assertRaises(ZeroDivisionError):
             unit_per('USD', 'NGN', 0, 119800)
+
 
 
 if __name__ == "__main__":

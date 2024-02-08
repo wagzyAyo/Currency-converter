@@ -32,7 +32,7 @@ def convert(from_c, to_c, amount):
          return convert_amount
       raise ZeroDivisionError("value must be greater than 0")
    
-   raise ValueError("Invalid currency")
+   raise KeyError("Invalid currency")
 
 
 
