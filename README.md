@@ -8,3 +8,8 @@ https://github.com/facebook/react-native<br>
 https://www.mongodb.com/languages/python<br>
 https://www.mongodb.com/compatibility/setting-up-flask-with-mongodb<br>
 https://docs.python.org/3/library/unittest.html
+
+
+# Currency converter App repo
+
+https://github.com/wagzyAyo/currency_converter_app
