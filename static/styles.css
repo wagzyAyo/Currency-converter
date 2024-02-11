@@ -67,6 +67,3 @@ body{
 .privacy-section{
     margin-bottom:2em;
 }
-.glass{
-    background-image: linear-gradient(to right, rgba(255,255,255, 1), rgba(255,255, 255, 0.6) );
-}
