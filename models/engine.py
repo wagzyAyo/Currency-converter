@@ -40,21 +40,18 @@ def get_database():
     except Exception as e:
         return
     finally:
-        #for data in currency_data.find():
-        #    print(data)
-        #for data in currency_data.find():
-        #    print(data)
-        pass
+        print(result)
 
-wat_4 = convert_to_wat('04:00', 'Africa/Lagos')
-schedule.every().day.at(str(wat_4.strftime('%H:%M'))).do(get_database)
+def run():
+    wat_4 = convert_to_wat('04:00', 'Africa/Lagos')
+    schedule.every().day.at(str(wat_4.strftime('%H:%M'))).do(get_database)
 
-wat_12 = convert_to_wat('12:00', 'Africa/Lagos')
-schedule.every().day.at(str(wat_12.strftime('%H:%M'))).do(get_database)
+    wat_12 = convert_to_wat('12:00', 'Africa/Lagos')
+    schedule.every().day.at(str(wat_12.strftime('%H:%M'))).do(get_database)
 
-wat_21 = convert_to_wat('21:00', 'Africa/Lagos')
-schedule.every().day.at(str(wat_21.strftime('%H:%M'))).do(get_database)
+    wat_21 = convert_to_wat('21:00', 'Africa/Lagos')
+    schedule.every().day.at(str(wat_21.strftime('%H:%M'))).do(get_database)
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
