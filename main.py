@@ -8,7 +8,8 @@ from models.currency_list import currency_list
 from api.convert import Bp
 from api.currency import simple_dict
 from api.currency_dict import currency_data
-from models.utils import convert, unit_per
+from models.utils import convert, unit_per, run_db
+import threading
 
 
 #print(currency_list)
@@ -19,6 +20,10 @@ app.register_blueprint(Bp, url_prefix='/api/convert')
 app.register_blueprint(simple_dict, url_prefix='/api/currencies&codes')
 app.register_blueprint(currency_data, url_prefix='/api/currencybase')
 
+
+
+db_thread = threading.Thread(target=run_db)
+db_thread.start()
 
 #class form
 class Form(FlaskForm):
@@ -79,3 +84,4 @@ def privacypolicy():
 
 if __name__ == '__main__':
     app.run(debug=True)
+  
