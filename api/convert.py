@@ -12,7 +12,8 @@ def convert_api(convert_from, convert_to, amount):
     amount = int(amount)
     convert_result = convert(convert_from, convert_to, amount)
     unit_result = unit_per(convert_from, convert_to, amount, convert_result)
-    return jsonify({'convert_from': convert_from,
+    return jsonify({
+             'convert_from': convert_from,
              'convert_to': convert_to,
              'amount_to_convert': amount,
              'converted_amount': Decimal(convert_result),

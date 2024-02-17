@@ -10,7 +10,7 @@ from datetime import datetime
 
 
 load_dotenv()
-endpoint = os.getenv('endpoint2')
+
 
 uri = os.getenv('uri')
 client = MongoClient(uri)
@@ -100,4 +100,3 @@ def run_db():
     while True:
         schedule.run_pending()
         time.sleep(1)
-
