@@ -22,7 +22,7 @@ def connect_db():
     return currency_data
 
 all_data = connect_db()
-response = all_data.find_one({}, sort=[('timestamp', -1)])
+response = all_data.find_one({}, sort=[('_id', -1)])
 #print(response)
 
 #Convert currency
