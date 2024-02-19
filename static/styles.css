@@ -40,7 +40,7 @@ body{
     background: #fff;
     border-radius: 30px;
     align-items: center;
-    width:487px;
+    max-width:487px;
     height:auto;
     padding: 50px;
 }
@@ -66,4 +66,11 @@ body{
 }
 .privacy-section{
     margin-bottom:2em;
+}
+
+@media screen and (max-width: 680px){
+    .imgs, .store-img{
+        width:120px;
+        height:auto;
+    }
 }
