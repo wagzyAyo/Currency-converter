@@ -13,6 +13,32 @@ Welcome to the Currency Converter App repository! This project aims to provide u
  Provide developers with access to currency conversion data through our API, allowing them to integrate real-time exchange rates into their applications and services 
  seamlessly.
 
+#Usage 
+<b>With API</b>
+
+
+``` bash
+http://currencyconverter.com.ng/api/convert/{CurrencyToConvert}/{currencyConvertingTO}/{amount}
+```
+in this example lets use 
+CurrencyToConvert as USD(United state dollars)
+CurrencyConvertingTo as NGN(Nigerian naira)
+Amount as 100
+
+Example response 
+
+``` json
+{
+"Unit_per1": "1USD = 1500.50NGN",
+"amount_to_convert": 100,
+"convert_from": "USD",
+"convert_to": "NGN",
+"converted_amount": "150049.76"
+}
+```
+
+
+
 # Helpful Resources:
 
 https://flask.palletsprojects.com/en/3.0.x/<br>
