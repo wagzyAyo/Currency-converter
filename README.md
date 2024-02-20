@@ -1,8 +1,8 @@
 # Currency-converter
 Welcome to the Currency Converter App repository! This project aims to provide users with a convenient and efficient solution for currency conversion needs, leveraging the power of Flask as the backend web framework and React Native for mobile app development.
 
-# Features:
-<b>
+<b> Features:
+<br>
  Real-time Exchange Rates: 
  Stay updated with the latest exchange rates from around the world, ensuring accurate and reliable currency conversions.
 
