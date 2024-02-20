@@ -1,7 +1,7 @@
 {% include 'base.html' %}
 {% include 'navbar.html' %}
 {% block content %}
-<div class="container about-section d-lg-flex align-items-center justify-content-center space">
+<div class="container about-section d-lg-flex align-items-top justify-content-center space">
     <div class="max-w">
         <h2 id="brief">About</h2>
         <p>We believe that financial transactions should be as borderless as the modern world 
@@ -12,7 +12,222 @@
             currencies with ease, and engage in transactions securely, all while embracing the interconnectedness 
             of our diverse world. Welcome to a future where financial freedom knows no bounds.</p>
         <h2 id="api">Api for developers</h2>
-        <p>Our APi documentation for developers</p>
+        <h4>Convert currency endpoint</h4>
+        <pre>
+            <code>
+                http://currencyconverter.com.ng/api/convert/{a}/{b}/{c}
+            </code>
+        </pre>
+
+        <p>Where {a} is currency to convert
+            {b} is currency converting to
+            {c} is amount to convert
+        </p>
+
+        <h4>Result data below where {a} is USD {b} is NGN {c} 100</h4>
+        <pre>
+            <code>
+                {
+                    &quot;Unit_per1&quot;: &quot;1USD = 1500.50NGN&quot;,
+                    &quot;amount_to_convert&quot;: 100,
+                    &quot;convert_from&quot;: &quot;USD&quot;,
+                    &quot;convert_to&quot;: &quot;NGN&quot;,
+                    &quot;converted_amount&quot;: &quot;150050.00&quot;
+                    }
+            </code>
+        </pre>
+
+        <h4>Get recent currency rates</h4>
+        <pre>
+            <code>
+                http://currencyconverter.com.ng/api/currencybase/
+            </code>
+        </pre>
+
+        <h4>Result data sample below</h4>
+        <pre>
+            <code>
+                {
+                    &quot;_id&quot;: &quot;65d486315172e6f64ef3c59c&quot;,
+                    &quot;base&quot;: &quot;EUR&quot;,
+                    &quot;date&quot;: &quot;2024-02-20&quot;,
+                    &quot;rates&quot;: {
+                    &quot;AED&quot;: 3.968311,
+                    &quot;AFN&quot;: 79.793242,
+                    &quot;ALL&quot;: 104.119593,
+                    &quot;AMD&quot;: 439.156843,
+                    &quot;ANG&quot;: 1.949273,
+                    &quot;AOA&quot;: 894.882475,
+                    &quot;ARS&quot;: 904.045728,
+                    &quot;AUD&quot;: 1.647288,
+                    &quot;AWG&quot;: 1.944747,
+                    &quot;AZN&quot;: 1.834147,
+                    &quot;BAM&quot;: 1.962731,
+                    &quot;BBD&quot;: 2.183752,
+                    &quot;BDT&quot;: 118.709184,
+                    &quot;BGN&quot;: 1.958674,
+                    &quot;BHD&quot;: 0.407244,
+                    &quot;BIF&quot;: 3088.362761,
+                    &quot;BMD&quot;: 1.080415,
+                    &quot;BND&quot;: 1.455466,
+                    &quot;BOB&quot;: 7.47339,
+                    &quot;BRL&quot;: 5.355829,
+                    &quot;BSD&quot;: 1.081539,
+                    &quot;BTC&quot;: 0.000020725611,
+                    &quot;BTN&quot;: 89.800349,
+                    &quot;BWP&quot;: 14.805693,
+                    &quot;BYN&quot;: 3.539564,
+                    &quot;BYR&quot;: 21176.13693,
+                    &quot;BZD&quot;: 2.180149,
+                    &quot;CAD&quot;: 1.456405,
+                    &quot;CDF&quot;: 2976.543922,
+                    &quot;CHF&quot;: 0.951958,
+                    &quot;CLF&quot;: 0.037788,
+                    &quot;CLP&quot;: 1042.67636,
+                    &quot;CNY&quot;: 7.773265,
+                    &quot;COP&quot;: 4233.174597,
+                    &quot;CRC&quot;: 556.174252,
+                    &quot;CUC&quot;: 1.080415,
+                    &quot;CUP&quot;: 28.631001,
+                    &quot;CVE&quot;: 110.657288,
+                    &quot;CZK&quot;: 25.471651,
+                    &quot;DJF&quot;: 192.573578,
+                    &quot;DKK&quot;: 7.45487,
+                    &quot;DOP&quot;: 63.405069,
+                    &quot;DZD&quot;: 145.152745,
+                    &quot;EGP&quot;: 33.382992,
+                    &quot;ERN&quot;: 16.206227,
+                    &quot;ETB&quot;: 61.305416,
+                    &quot;EUR&quot;: 1,
+                    &quot;FJD&quot;: 2.448324,
+                    &quot;FKP&quot;: 0.858537,
+                    &quot;GBP&quot;: 0.856672,
+                    &quot;GEL&quot;: 2.846935,
+                    &quot;GGP&quot;: 0.858537,
+                    &quot;GHS&quot;: 13.508702,
+                    &quot;GIP&quot;: 0.858537,
+                    &quot;GMD&quot;: 73.198365,
+                    &quot;GNF&quot;: 9297.001565,
+                    &quot;GTQ&quot;: 8.444938,
+                    &quot;GYD&quot;: 226.449636,
+                    &quot;HKD&quot;: 8.44963,
+                    &quot;HNL&quot;: 26.694758,
+                    &quot;HRK&quot;: 7.595421,
+                    &quot;HTG&quot;: 143.018998,
+                    &quot;HUF&quot;: 388.830065,
+                    &quot;IDR&quot;: 16917.896701,
+                    &quot;ILS&quot;: 3.947728,
+                    &quot;IMP&quot;: 0.858537,
+                    &quot;INR&quot;: 89.620275,
+                    &quot;IQD&quot;: 1416.816158,
+                    &quot;IRR&quot;: 45490.880422,
+                    &quot;ISK&quot;: 148.308322,
+                    &quot;JEP&quot;: 0.858537,
+                    &quot;JMD&quot;: 169.461538,
+                    &quot;JOD&quot;: 0.76612,
+                    &quot;JPY&quot;: 162.209755,
+                    &quot;KES&quot;: 156.117346,
+                    &quot;KGS&quot;: 96.621072,
+                    &quot;KHR&quot;: 4408.649382,
+                    &quot;KMF&quot;: 493.212838,
+                    &quot;KPW&quot;: 972.377222,
+                    &quot;KRW&quot;: 1441.468408,
+                    &quot;KWD&quot;: 0.332573,
+                    &quot;KYD&quot;: 0.901291,
+                    &quot;KZT&quot;: 487.997729,
+                    &quot;LAK&quot;: 22555.063706,
+                    &quot;LBP&quot;: 16207.531873,
+                    &quot;LKR&quot;: 338.107049,
+                    &quot;LRD&quot;: 205.828223,
+                    &quot;LSL&quot;: 20.398195,
+                    &quot;LTL&quot;: 3.190185,
+                    &quot;LVL&quot;: 0.653532,
+                    &quot;LYD&quot;: 5.235585,
+                    &quot;MAD&quot;: 10.906714,
+                    &quot;MDL&quot;: 19.338646,
+                    &quot;MGA&quot;: 4906.553031,
+                    &quot;MKD&quot;: 61.607881,
+                    &quot;MMK&quot;: 2271.262299,
+                    &quot;MNT&quot;: 3692.09522,
+                    &quot;MOP&quot;: 8.713168,
+                    &quot;MRU&quot;: 42.773917,
+                    &quot;MUR&quot;: 49.517371,
+                    &quot;MVR&quot;: 16.639898,
+                    &quot;MWK&quot;: 1820.713542,
+                    &quot;MXN&quot;: 18.392026,
+                    &quot;MYR&quot;: 5.183287,
+                    &quot;MZN&quot;: 68.557385,
+                    &quot;NAD&quot;: 20.397943,
+                    &quot;NGN&quot;: 1621.162732,
+                    &quot;NIO&quot;: 39.811318,
+                    &quot;NOK&quot;: 11.311131,
+                    &quot;NPR&quot;: 143.681025,
+                    &quot;NZD&quot;: 1.751067,
+                    &quot;OMR&quot;: 0.415928,
+                    &quot;PAB&quot;: 1.081519,
+                    &quot;PEN&quot;: 4.130725,
+                    &quot;PGK&quot;: 4.11862,
+                    &quot;PHP&quot;: 60.494621,
+                    &quot;PKR&quot;: 299.43109,
+                    &quot;PLN&quot;: 4.326791,
+                    &quot;PYG&quot;: 7890.007157,
+                    &quot;QAR&quot;: 3.933816,
+                    &quot;RON&quot;: 4.977149,
+                    &quot;RSD&quot;: 117.192668,
+                    &quot;RUB&quot;: 99.933027,
+                    &quot;RWF&quot;: 1376.825548,
+                    &quot;SAR&quot;: 4.052088,
+                    &quot;SBD&quot;: 9.110835,
+                    &quot;SCR&quot;: 14.55252,
+                    &quot;SDG&quot;: 649.329378,
+                    &quot;SEK&quot;: 11.22486,
+                    &quot;SGD&quot;: 1.452532,
+                    &quot;SHP&quot;: 1.360461,
+                    &quot;SLE&quot;: 24.464942,
+                    &quot;SLL&quot;: 21338.198864,
+                    &quot;SOS&quot;: 617.454961,
+                    &quot;SRD&quot;: 39.055934,
+                    &quot;STD&quot;: 22362.412245,
+                    &quot;SVC&quot;: 9.463505,
+                    &quot;SYP&quot;: 14047.323157,
+                    &quot;SZL&quot;: 20.528871,
+                    &quot;THB&quot;: 38.92752,
+                    &quot;TJS&quot;: 11.848339,
+                    &quot;TMT&quot;: 3.781453,
+                    &quot;TND&quot;: 3.390886,
+                    &quot;TOP&quot;: 2.55556,
+                    &quot;TRY&quot;: 33.385259,
+                    &quot;TTD&quot;: 7.33798,
+                    &quot;TWD&quot;: 33.982832,
+                    &quot;TZS&quot;: 2738.852669,
+                    &quot;UAH&quot;: 41.425298,
+                    &quot;UGX&quot;: 4193.80913,
+                    &quot;USD&quot;: 1.080415,
+                    &quot;UYU&quot;: 42.309402,
+                    &quot;UZS&quot;: 13352.272976,
+                    &quot;VEF&quot;: 3920720.881213,
+                    &quot;VES&quot;: 39.141696,
+                    &quot;VND&quot;: 26507.985692,
+                    &quot;VUV&quot;: 130.151283,
+                    &quot;WST&quot;: 2.970909,
+                    &quot;XAF&quot;: 658.31209,
+                    &quot;XAG&quot;: 0.046788,
+                    &quot;XAU&quot;: 0.000533,
+                    &quot;XCD&quot;: 2.919876,
+                    &quot;XDR&quot;: 0.816421,
+                    &quot;XOF&quot;: 658.293745,
+                    &quot;XPF&quot;: 119.331742,
+                    &quot;YER&quot;: 270.481643,
+                    &quot;ZAR&quot;: 20.518434,
+                    &quot;ZMK&quot;: 9725.030475,
+                    &quot;ZMW&quot;: 24.740937,
+                    &quot;ZWL&quot;: 347.893237
+                    },
+                    &quot;success&quot;: true,
+                    &quot;timestamp&quot;: 1708426743
+                    }
+            </code>
+        </pre>
     </div>
     <div class="about-img">
         <img class="about" src="../static/images/unsplash_TamMbr4okv4.png" alt="about">
