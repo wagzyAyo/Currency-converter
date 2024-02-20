@@ -21,9 +21,12 @@ def connect_db():
     currency_data = data_collection.currency_data
     return currency_data
 
-all_data = connect_db()
-response = all_data.find_one({}, sort=[('_id', -1)])
-#print(response)
+def data():
+    all_data = connect_db()
+    return  all_data.find_one({}, sort=[('_id', -1)])
+
+schedule.every(2).minutes.do(data)
+response = data()
 
 #Convert currency
 def convert(from_c, to_c, amount):
