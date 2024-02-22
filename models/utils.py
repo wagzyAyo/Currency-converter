@@ -28,9 +28,12 @@ def data():
 
 def get_recent_data():
     """Get recent data on schedule from database"""
-    schedule.every(2).minutes.do(data)
+    while True:
+        latest_data = data()
+        time.sleep(60)
+        return latest_data
 
-response = data()
+response = get_recent_data()
 
 #Convert currency
 def convert(from_c, to_c, amount):
