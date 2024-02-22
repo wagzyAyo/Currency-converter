@@ -26,14 +26,8 @@ def data():
     all_data = connect_db()
     return  all_data.find_one({}, sort=[('_id', -1)])
 
-def get_recent_data():
-    """Get recent data on schedule from database"""
-    while True:
-        latest_data = data()
-        time.sleep(60)
-        return latest_data
 
-response = get_recent_data()
+response = data()
 
 #Convert currency
 def convert(from_c, to_c, amount):
