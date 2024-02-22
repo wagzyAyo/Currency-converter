@@ -22,10 +22,14 @@ def connect_db():
     return currency_data
 
 def data():
+    """Get the last data in database"""
     all_data = connect_db()
     return  all_data.find_one({}, sort=[('_id', -1)])
 
-schedule.every(2).minutes.do(data)
+def get_recent_data():
+    """Get recent data on schedule from database"""
+    schedule.every(2).minutes.do(data)
+
 response = data()
 
 #Convert currency
