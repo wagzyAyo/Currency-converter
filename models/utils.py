@@ -23,6 +23,7 @@ def connect_db():
 
 def data():
     """Get the last data in database"""
+    schedule.every(2).minutes.do(data)
     all_data = connect_db()
     return  all_data.find_one({}, sort=[('_id', -1)])
 

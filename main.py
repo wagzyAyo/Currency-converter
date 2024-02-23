@@ -8,7 +8,7 @@ from models.currency_list import currency_list
 from api.convert import Bp
 from api.currency import simple_dict
 from api.currency_dict import currency_data
-from models.utils import convert, unit_per, run_db
+from models.utils import convert, unit_per, run_db, data
 import threading
 
 
@@ -24,6 +24,9 @@ app.register_blueprint(currency_data, url_prefix='/api/currencybase')
 
 db_thread = threading.Thread(target=run_db)
 db_thread.start()
+
+do_data = threading.Thread(target=data)
+do_data.start()
 #class form
 class Form(FlaskForm):
    #country_image1 = StringField(render_kw={'readonly': True})
