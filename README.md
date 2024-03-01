@@ -1,4 +1,8 @@
 # Currency-converter
+
+![alt text](C-1.png)
+
+
 Welcome to the Currency Converter App repository! This project aims to provide users with a convenient and efficient solution for currency conversion needs, leveraging the power of Flask as the backend web framework and React Native for mobile app development.
 
 <b> Features:</b>
@@ -13,6 +17,8 @@ Welcome to the Currency Converter App repository! This project aims to provide u
  Provide developers with access to currency conversion data through our API, allowing them to integrate real-time exchange rates into their applications and services 
  seamlessly.
 
+
+
 # Usage 
 
 <b>With API</b>
@@ -26,7 +32,7 @@ CurrencyToConvert as USD(United state dollars)
 CurrencyConvertingTo as NGN(Nigerian naira)
 Amount as 100
 
-Example response 
+<b>Example response </b>
 
 ``` json
 {
