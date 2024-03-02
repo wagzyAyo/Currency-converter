@@ -2,7 +2,7 @@
 
 ![alt text](C-1.png)
 
-[text](../../../Downloads/5a04dc9d-d3b1-435f-a2f0-d0e4ccdcec09.webm)
+<video controls src="converter.mp4" title="Title"></video>
 
 Welcome to the Currency Converter App repository! This project aims to provide users with a convenient and efficient solution for currency conversion needs, leveraging the power of Flask as the backend web framework and React Native for mobile app development.
 
