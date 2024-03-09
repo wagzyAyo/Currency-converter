@@ -1,2 +1,5 @@
 Flask==3.0.0
 pymongo==4.3.3
+flask_wtf==4.0.1
+pytz==4.0.0
+schedule==4.0.0
