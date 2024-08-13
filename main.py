@@ -15,6 +15,7 @@ import threading
 #print(currency_list)
 
 app = Flask(__name__)
+application = app
 app.secret_key = os.getenv('token')
 app.register_blueprint(Bp, url_prefix='/api/convert')
 app.register_blueprint(simple_dict, url_prefix='/api/currencies&codes')
